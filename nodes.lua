@@ -384,6 +384,7 @@ function mymillwork.register_all(suffix, model, mdesc, sbox, cbox, node_suffix, 
     collision_box = cbox,
     paramtype = "light",
     paramtype2 = "facedir",
+    use_texture_alpha = "clip",
     groups = group,
     on_place = minetest.rotate_node,
     })
