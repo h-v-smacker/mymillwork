@@ -389,6 +389,18 @@ function mymillwork.register_all(suffix, model, mdesc, sbox, cbox, node_suffix, 
     on_place = minetest.rotate_node,
     })
 
+    --[[
+      Aliases for previously misspelled "morebloks" in
+      node_suffix from past versions of mymillworks
+    ]]
+    if node_suffix:find("moreblocks") then
+        local wrong_suffix = node_suffix:gsub("moreblocks", "morebloks")
+        minetest.register_alias(
+            "mymillwork:" .. suffix .. "_" .. wrong_suffix,
+            "mymillwork:" .. suffix .. "_" .. node_suffix
+        )
+    end
+
     table.insert(mymillwork.registered, {material, node_suffix})
 
 end
