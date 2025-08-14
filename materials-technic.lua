@@ -1,6 +1,6 @@
 local nici = 1
 
---[[ Technic Worldgen ]]--
+-- [[ Technic Worldgen ]] --
 
 local nodes = {
 
@@ -13,16 +13,14 @@ local nodes = {
 -- technic:marble
     ["marble"] = {
         description = ("Marble"),
-        groups = {cracky = 3, stone = 1, marble = 1,
-        not_in_creative_inventory = nici}
+        groups = {cracky = 3, stone = 1, marble = 1, not_in_creative_inventory = nici}
     },
     
 
 -- technic:marble_bricks
     ["marble_bricks"] = {
         description = ("Marble Bricks"),
-        groups = {cracky = 3, stone = 1, marble = 1,
-        not_in_creative_inventory = nici}
+        groups = {cracky = 3, stone = 1, marble = 1, not_in_creative_inventory = nici}
     },
 
 -- technic:uranium_block
@@ -68,6 +66,22 @@ local nodes = {
     },
 }
 
+
+for name, def in pairs(nodes) do
+
+    mymillwork.register("technic:"..name,
+        "technic_"..name,
+        def.description,
+        "technic_"..name..".png",
+        def.groups
+    )
+
+end
+
+-- additional nodes
+
+-- [[ Texture name doesn't follow convention ]] --
+
 -- technic:wrougt_iron_block
 mymillwork.register("technic:wrought_iron_block",
     "technic_wrought_iron_block",
@@ -78,20 +92,22 @@ mymillwork.register("technic:wrought_iron_block",
 
 -- [[ Technic Concrete ]] --
 
--- if minetest.get_modpath("concrete") then
+if minetest.get_modpath("concrete") then
 
--- technic:blast_resistant_concrete
+    mymillwork.register("technic:concrete",
+        "technic_concrete_block",
+        "Concrete Block",
+        "technic_concrete_block.png",
+        {cracky = 1, level = 2, concrete = 1, not_in_creative_inventory = nici}
+    )
 
-
--- end
-
-for name, def in pairs(nodes) do
-
-        mymillwork.register("technic:"..name,
-            "technic_"..name,
-            def.description,
-            "technic_"..name..".png",
-            def.groups
-            )
+    mymillwork.register("technic:blast_resistant_concrete",
+        "blast_resistant_concrete",
+        "Blast-resistant Concrete Block",
+        "technic_blast_resistant_concrete_block.png",
+        {cracky = 1, level = 3, concrete = 1, not_in_creative_inventory = nici}
+    )
 
 end
+
+
